@@ -33,6 +33,7 @@ The extension will inject the $rules object to the Vue instance, the rules will 
  
 # Examples
 
+Using several rules
 ```vue
 <q-input
     v-model="form.name"
@@ -47,6 +48,7 @@ The extension will inject the $rules object to the Vue instance, the rules will 
 />
 ```
 
+Using logic operators
 ```vue
 <q-input-number
     v-model="form.age"
@@ -56,11 +58,21 @@ The extension will inject the $rules object to the Vue instance, the rules will 
     ]"
 />
 ```
-
+Check if true. This is not a method of Vuelidate but may be useful, so it was added
+```vue
+<q-field
+    :value="form.accept"
+    label="Please read the license"
+    stack-label
+    :rules="[
+      val => $rules.isTrue(val) || 'Please accept the licence'
+    ]"
+/>
+```
 
 ## To do
 
-* Currentlry is not working with locator based methods like sameAs or requiredIf
+* Make locator based methods like sameAs or requiredIf to work, or develop an alternative
            
 ### Related projects
 * Quasar Framework https://quasar.dev/
