@@ -20,16 +20,44 @@ quasar ext add vuelidate-rules
 Quasar CLI will retrieve it from NPM and install the extension.
 
 # Usage
-The extension will inject the $rules object to the Vue instance, the rules will then be available in the components.
+The extension will inject the $rules object to the Vue instance, the rules will then be available in the components. The customized error message is optional, always as the last parameter, if not provided it will return `false`.
 
-* If no paramethers are needed:
+* If no parameters are needed:
   ```javascript
-  val => $rules.alpha(val) || 'The error message'
+  $rules.alpha() 
+  $rules.alpha('Please use only letters')
   ```
 * If paramets are needed:
   ```javascript
-  val => $rules.between(10,100)(val) || 'The error message'
+  $rules.between(10,100)
+  $rules.between(10,100, 'Please enter a number between 0 and 100')
   ```  
+# Available methods
+
+| **rule**   | **parameters**| **description** |
+|--------------|------------   | --- |
+| `required`   | _none_ | Requires non-empty data. Checks for empty arrays and strings containing only whitespaces.
+| `minLength`  | `length` integer | Requires the input to have a minimum specified length, inclusive. Works with arrays.
+| `maxLength`  | `length` integer | Requires the input to have a maximum specified length, inclusive. Works with arrays.
+| `minValue`   | `value` integer | Requires entry to have a specified minimum numeric value or Date.
+| `maxValue`   | `value` integer | Requires entry to have a specified maximum numeric value or Date.
+| `between`    | `min` integer, `max` integer | Checks if a number or Date is in specified bounds. Min and max are both inclusive.
+| `alpha`      | _none_ | Accepts only alphabet characters.
+| `alphaNum`   | _none_ | Accepts only alphanumerics.
+| `numeric`    | _none_ | Accepts only numerics.
+| `integer`    | _none_ | Accepts positive and negative integers.
+| `decimal`    | _none_ | Accepts positive and negative decimal numbers.
+| `email`      | _none_ | Accepts valid email addresses. Keep in mind you still have to carefully verify it on your server, as it is impossible to tell if the address is real without sending verification email.
+| `ipAddress`  | _none_ | Accepts valid IPv4 addresses in dotted decimal notation like 127.0.0.1.
+| `macAddress` | `separator` string, (default ':')  | Accepts valid MAC addresses like 00:ff:11:22:33:44:55
+| `url` | _none_ | Accepts only URLs.
+| `isTrue` | _none_ | Only accepts a `true` value
+| `or` | other rules | Passes when at least one of provided rules passes
+| `and` | other rules | Passes when all of provided validators passes.
+| `not` | rule | Passes when provided validator would not pass
+| `is` | `value` | Passes when provided value is the same as the field value, for example `true` or other data property
+
+* All methods receive a last optional parameter with the customizes error message
  
 # Examples
 
@@ -40,34 +68,60 @@ Using several rules
     label="Your name *"
     hint="Name and surname"
     :rules="[
-      val => $rules.required(val) || 'Your name is required',
-      val => $rules.alpha(val) || 'Your name should not have numbers',
-      val => $rules.minLength(3)(val) || 'Your name should have at least 3 letters',
-      val => $rules.maxLength(10)(val) || 'Your name should not be larger than 10 letters'
+      $rules.required('Your name is required'),
+      $rules.alpha('Your name should not have numbers'),
+      $rules.minLength(3, 'Your name should have at least 3 letters'),
+      $rules.maxLength(10, 'Your name should not be larger than 10 letters') 
     ]"
 />
 ```
 
 Using logic operators
 ```vue
-<q-input-number
+<q-input
     v-model="form.age"
     label="Your age *"
     :rules="[
-      val => $rules.or($rules.between(10,15), $rules.between(20,25))(val) || 'Your age has to be between 10 and 15 or 20 and 25',
+      $rules.or($rules.between(10,15), $rules.between(20,25)),
     ]"
 />
 ```
-Check if true. This is not a method of Vuelidate but may be useful, so it was added
+
+```vue
+<q-input
+    v-model="form.age"
+    label="Your age *"
+    :rules="[
+      $rules.or(
+        $rules.and(
+          $rules.between(10,17),
+          $rules.between(16,25)
+        ),
+        $rules.minValue(17),
+        'Or nd message 2'
+      ),
+    ]"
+  />
+```
+### Modified methods
+These methods are not the original Vuelidate methods but modified versions
+
+
+
+### Other not Vuelidate methods
+
+Check if is a specific value. This is not a method of Vuelidate but may be useful, so it was added. Can be tied to other data properties, for example to check if a password is the same as the confirmation (not reactive yet)
 ```vue
 <q-field
-    :value="form.accept"
-    label="Please read the license"
-    stack-label
-    :rules="[
-      val => $rules.isTrue(val) || 'Please accept the licence'
-    ]"
-/>
+        :value="form.accept"
+        label="Please read the license"
+        stack-label
+        :rules="[
+           $rules.is(true, 'Please accept the license')
+        ]"
+      >
+        <q-toggle v-model="form.accept" label="I accept the license and terms" />
+</q-field>
 ```
 
 ## To do
