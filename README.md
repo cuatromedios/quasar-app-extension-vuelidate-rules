@@ -1,7 +1,7 @@
 Quasar App Extension Vuelidate Rules
 ===
 
-> The elegance of Quasar's [internal validation](https://quasar.dev/vue-components/input#Internal-validation) with the power of Vuelidate [built-in validators](https://vuelidate.js.org/#sub-builtin-validators). 
+> The elegance of Quasar's [internal validation](https://quasar.dev/vue-components/input#Internal-validation) with the power of [Vuelidate](https://vuelidate.js.org/#sub-builtin-validators) built-in validators. 
 
 Quasar Framework offers a very practical way to validate form fields, using the `rules` attribute in Field wrapper, input and select component. The attribute accept an array of functions that returns true or a string with an error message.
 
@@ -57,12 +57,12 @@ The extension will inject the $rules object to the Vue instance, the rules will 
 | `not` | rule | Passes when provided validator would not pass
 | `is` | `value` | Passes when provided value is the same as the field value, for example `true` or other data property
 
-* All methods receive a last optional parameter with the customizes error message
+* All methods receive a last optional parameter with the customized error message.
  
 # Examples
 
 Using several rules
-```vue
+```html
 <q-input
     v-model="form.name"
     label="Your name *"
@@ -77,7 +77,7 @@ Using several rules
 ```
 
 Using logic operators
-```vue
+```html
 <q-input
     v-model="form.age"
     label="Your age *"
@@ -87,7 +87,7 @@ Using logic operators
 />
 ```
 
-```vue
+```html
 <q-input
     v-model="form.age"
     label="Your age *"
@@ -106,12 +106,12 @@ Using logic operators
 ### Modified methods
 These methods are not the original Vuelidate methods but modified versions
 
-
+TBD
 
 ### Other not Vuelidate methods
 
 Check if is a specific value. This is not a method of Vuelidate but may be useful, so it was added. Can be tied to other data properties, for example to check if a password is the same as the confirmation (not reactive yet)
-```vue
+```html
 <q-field
         :value="form.accept"
         label="Please read the license"
