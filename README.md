@@ -1,13 +1,13 @@
 Quasar App Extension Vuelidate Rules
 ===
 
-> The elegance of Quasar's [internal validation](https://quasar.dev/vue-components/input#Internal-validation) with the power of [Vuelidate](https://vuelidate.js.org/#sub-builtin-validators) built-in validators. 
+> The elegance of Quasar's [internal validation](https://quasar.dev/vue-components/input#Internal-validation) with the power of [Vuelidate](https://vuelidate.js.org/#sub-builtin-validators)'s built-in validators. 
 
-Quasar Framework offers a very practical way to validate form fields, using the `rules` attribute in Field wrapper, input and select component. The attribute accept an array of functions that returns true or a string with an error message.
+Quasar Framework offers a very practical way to validate form fields, using the `rules` attribute in Field wrapper, input and select component. The attribute accepts an array of functions that returns true or a string with an error message.
 
-In most cases this is fair enough, but in some cases you need more complex validations. Quasar documentation recommend Vuelidate as an external validation solution, but using this approach has a downside: You cannot use external validation to validate child components of a Form.
+In most cases this is enough, but in some cases you need more complex validations. Quasar's documentation recommends Vuelidate as an external validation solution, but using this approach has a downside: You cannot use external validation to validate child components of a Form.
 
-The great power of Vuelidate also needs some more code to set up a validation, adding the validations property to the component to define the rules and bind the error and error-message attributes of the component.  
+Leveraging the power of Vuelidate also requires more code to set up a validation, add the validations property to the component to define the rules and bind the error and error-message attributes of the component.  
 
 #### This extension exposes Vuelidate methods so they can be used as Quasar internal rules.
 
@@ -20,7 +20,7 @@ quasar ext add vuelidate-rules
 Quasar CLI will retrieve it from NPM and install the extension.
 
 # Usage
-The extension will inject the $rules object to the Vue instance, the rules will then be available in the components. The customized error message is optional, always as the last parameter, if not provided it will return `false`.
+The extension will inject the $rules object to the Vue instance, the rules will then be available in the components. The customized error message is optional, always as the last parameter, and if not provided it will return `false`.
 
 * If no parameters are needed:
   ```javascript
