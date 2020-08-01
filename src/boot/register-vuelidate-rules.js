@@ -85,6 +85,9 @@ export default ({ Vue }) => {
     },
     not (rule, message = false) {
       return (val) => methods.not(rule)(val) || message
+    },
+    sameAs(locator, message = false) {
+      return (val) => val == locator || message
     }
   }
 }
