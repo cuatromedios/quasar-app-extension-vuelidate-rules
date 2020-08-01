@@ -55,7 +55,8 @@ The extension will inject the $rules object to the Vue instance, the rules will 
 | `or` | other rules | Passes when at least one of provided rules passes
 | `and` | other rules | Passes when all of provided validators passes.
 | `not` | rule | Passes when provided validator would not pass
-| `is` | `value` | Passes when provided value is the same as the field value, for example `true` or other data property
+| `is` | `value` | Passes when the field value is the same as the provided value, for example `true` 
+| `sameAs` | `value` | Passes when field value is the same as other field value
 
 * All methods receive a last optional parameter with the customized error message.
  
