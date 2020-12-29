@@ -67,7 +67,7 @@ export default ({ Vue }) => {
       return (val) => methods.macAddress(separator)(val) || message
     },
     url (message = false) {
-      return (val) => methods.ipAddress(val) || message
+      return (val) => methods.url(val) || message
     },
     or (...args) {
       let message = false
