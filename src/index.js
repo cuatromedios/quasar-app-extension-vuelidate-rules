@@ -20,7 +20,7 @@ module.exports = function (api) {
   // Quasar compatibility check; you may need
   // hard dependencies, as in a minimum version of the "quasar"
   // package or a minimum version of "@quasar/app" CLI
-  api.compatibleWith('quasar', '^1.8.5')
+  api.compatibleWith('quasar', '^1.8.5  || >= 2')
   api.compatibleWith('@quasar/app', '^1.0.0  || >= 2')
 
   // Here we extend /quasar.conf.js, so we can add
