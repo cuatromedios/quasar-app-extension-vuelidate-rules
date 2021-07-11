@@ -18,6 +18,7 @@ Quasar 2 compatible ( => version 0.4.0 )
 ```bash
 quasar ext add vuelidate-rules
 ```
+For Quasar 1, please use version 0.3.2
 
 # Usage
 The extension will inject the $rules object to the Vue instance, the rules will then be available in the components. The customized error message is optional, always as the last parameter, and if not provided it will return `false`.
