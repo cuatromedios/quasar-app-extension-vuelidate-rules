@@ -27,7 +27,7 @@ The extension will inject the $rules object to the Vue instance, the rules will 
   $rules.alpha() 
   $rules.alpha('Please use only letters')
   ```
-* If paramets are needed:
+* If parameters are needed:
   ```javascript
   $rules.between(10,100)
   $rules.between(10,100, 'Please enter a number between 0 and 100')
