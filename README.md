@@ -14,10 +14,10 @@ Leveraging the power of Vuelidate also requires more code to set up a validation
 More information about Quasar Validation: https://quasar.dev/vue-components/field#Validation and Form component: https://quasar.dev/vue-components/form
 
 # Install
+Quasar 2 compatible ( => version 0.4.0 )
 ```bash
 quasar ext add vuelidate-rules
 ```
-Quasar CLI will retrieve it from NPM and install the extension.
 
 # Usage
 The extension will inject the $rules object to the Vue instance, the rules will then be available in the components. The customized error message is optional, always as the last parameter, and if not provided it will return `false`.
@@ -37,6 +37,8 @@ The extension will inject the $rules object to the Vue instance, the rules will 
 | **rule**   | **parameters**| **description** |
 |--------------|------------   | --- |
 | `required`   | _none_ | Requires non-empty data. Checks for empty arrays and strings containing only whitespaces.
+| `requiredIf` | `ref` | Requires non-empty data only if the reference evaluates to true.
+| `requiredUnless` | `ref` | Requires non-empty data only if the reference evaluates to false.
 | `minLength`  | `length` integer | Requires the input to have a minimum specified length, inclusive. Works with arrays.
 | `maxLength`  | `length` integer | Requires the input to have a maximum specified length, inclusive. Works with arrays.
 | `minValue`   | `value` integer | Requires entry to have a specified minimum numeric value or Date.
