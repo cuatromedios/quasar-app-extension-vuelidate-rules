@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-vuelidate-rules",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "Use Vuelidate methods as internal Quasar rules for validation",
   "author": "Ramses <ramses@cuatromedios.com>",
   "license": "MIT",
@@ -20,6 +20,6 @@
     "yarn": ">= 1.6.0"
   },
   "dependencies": {
-    "vuelidate": "^0.7.6"
+    "@vuelidate/validators": "^2.0.0-alpha.18"
   }
 }
