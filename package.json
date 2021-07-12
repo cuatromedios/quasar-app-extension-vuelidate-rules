@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-vuelidate-rules",
-  "version": "0.3.2",
+  "version": "0.3.5",
   "description": "Use Vuelidate methods as internal Quasar rules for validation",
   "author": "Ramses <ramses@cuatromedios.com>",
   "license": "MIT",
