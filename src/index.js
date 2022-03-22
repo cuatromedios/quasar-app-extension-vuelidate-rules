@@ -21,7 +21,12 @@ module.exports = function (api) {
   // hard dependencies, as in a minimum version of the "quasar"
   // package or a minimum version of "@quasar/app" CLI
   api.compatibleWith('quasar', '^1.8.5  || >= 2')
-  api.compatibleWith('@quasar/app', '^1.0.0  || >= 2')
+  if (api.hasVite) {
+    api.compatibleWith('@quasar/app-vite', '^1.0.0-beta.0')
+  }
+  else {
+    api.compatibleWith('@quasar/app', '^1.0.0  || >= 2')
+  }
 
   // Here we extend /quasar.conf.js, so we can add
   // a boot file which registers our new UI component;
