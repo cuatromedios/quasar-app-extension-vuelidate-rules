@@ -11,7 +11,9 @@ function extendConf (conf) {
   conf.boot.push('~quasar-app-extension-vuelidate-rules/src/boot/register-vuelidate-rules.js')
 
   // make sure boot & component files get transpiled
-  conf.build.transpileDependencies.push(/quasar-app-extension-vuelidate-rules[\\/]src/)
+  if (conf.build.transpileDependencies !== undefined) { // quasar/app-vite does not have transpileDependencies
+    conf.build.transpileDependencies.push(/quasar-app-extension-vuelidate-rules[\\/]src/)
+  }
 
 }
 
