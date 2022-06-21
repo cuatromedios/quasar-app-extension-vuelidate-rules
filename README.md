@@ -32,7 +32,24 @@ The extension will inject the $rules object to the Vue instance, the rules will 
   ```javascript
   $rules.between(10,100)
   $rules.between(10,100, 'Please enter a number between 0 and 100')
-  ```  
+  ```
+If you want to use supplied methods with composition API. You can:
+ 
+* Import only selected method:
+  ```javascript
+  import {alpha} from 'quasar-app-extension-vuelidate-rules/src/rules.js'
+  
+  alpha()
+  alpha('Please use only letters')
+  ``` 
+* Import all rules methods to one variable:
+  ```javascript
+  import * as $rules from 'quasar-app-extension-vuelidate-rules/src/rules.js'
+  
+  $rules.alpha()
+  $rules.alpha('Please use only letters')
+  ``` 
+  
 # Available methods
 
 | **rule**   | **parameters**| **description** |
